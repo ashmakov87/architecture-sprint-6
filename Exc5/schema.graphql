@@ -1,0 +1,33 @@
+Использование GraphQL дает ряд преимуществ перед REST запросами:
+1) Мы можем запрашивать только необходимые поля сущностей - снижаем трафик
+2) Мы можем заменить несколько REST запросов нескольких связанных сущностей одним GraphQL запросом - уменьшаем количество запросов и сокращаем время на сбор всех необходимх данных
+
+
+Схема GraphQL:
+
+type Client {
+  id: String!
+  name: String
+  age: Int
+  documents: [Document]
+  relatives: [Relative]
+}
+
+type Document {
+  id: String!
+  type: String
+  number: String
+  issueDate: String
+  expiryDate: String
+}
+
+type Relative {
+  id: String!
+  relationType: String
+  name: String
+  age: Int
+}
+
+type Query {
+  client(id: String!): Client
+}
